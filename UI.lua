@@ -7,7 +7,7 @@ local PlayerService = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 
 local Debug,LocalPlayer = false,PlayerService.LocalPlayer
-local MainAssetFolder = Debug and ReplicatedStorage.BracketV32 or InsertService:LoadLocalAsset("rbxassetid://11751068981")
+local MainAssetFolder = Debug and ReplicatedStorage.Vaxxo or InsertService:LoadLocalAsset("rbxassetid://11751064512")
 
 local function GetAsset(AssetPath)
 	AssetPath = AssetPath:split("/")
@@ -126,7 +126,7 @@ local function InitToolTip(Parent,ScreenAsset,Text)
 	end)
 end
 local function InitScreen()
-	local ScreenAsset = GetAsset("Screen/Bracket")
+	local ScreenAsset = GetAsset("Screen/Vaxxo")
 	if not Debug then sethiddenproperty(ScreenAsset,"OnTopOfCoreBlur",true) end
 	ScreenAsset.Name = "Vexxo"
 	ScreenAsset.Parent = Debug and LocalPlayer:FindFirstChildOfClass("PlayerGui") or CoreGui
@@ -1115,8 +1115,8 @@ local function InitColorpicker(Parent,ScreenAsset,Window,Colorpicker)
 	end)
 end
 
-local Bracket = InitScreen()
-function Bracket:Window(Window)
+local Vaxxo = InitScreen()
+function Vaxxo:Window(Window)
 	Window = GetType(Window,{},"table")
 	Window.Name = GetType(Window.Name,"Window","string")
 	Window.Color = GetType(Window.Color,Color3.new(1,0.5,0.25),"Color3")
@@ -1129,11 +1129,11 @@ function Bracket:Window(Window)
 	Window.Elements = {}
 	Window.Flags = {}
 
-	local WindowAsset = InitWindow(Bracket.ScreenAsset,Window)
+	local WindowAsset = InitWindow(Vaxxo.ScreenAsset,Window)
 	function Window:Tab(Tab)
 		Tab = GetType(Tab,{},"table")
 		Tab.Name = GetType(Tab.Name,"Tab","string")
-		local ChooseTab = InitTab(Bracket.ScreenAsset,WindowAsset,Window,Tab)
+		local ChooseTab = InitTab(Vaxxo.ScreenAsset,WindowAsset,Window,Tab)
 
 		function Tab:Divider(Divider)
 			Divider = GetType(Divider,{},"table")
@@ -1151,7 +1151,7 @@ function Bracket:Window(Window)
 			Button = GetType(Button,{},"table")
 			Button.Name = GetType(Button.Name,"Button","string")
 			Button.Callback = GetType(Button.Callback,function() end,"function")
-			InitButton(ChooseTab(Button.Side),Bracket.ScreenAsset,Window,Button)
+			InitButton(ChooseTab(Button.Side),Vaxxo.ScreenAsset,Window,Button)
 			return Button
 		end
 		function Tab:Toggle(Toggle)
@@ -1164,7 +1164,7 @@ function Bracket:Window(Window)
 			Window.Elements[#Window.Elements + 1] = Toggle
 			Window.Flags[Toggle.Flag] = Toggle.Value
 
-			InitToggle(ChooseTab(Toggle.Side),Bracket.ScreenAsset,Window,Toggle)
+			InitToggle(ChooseTab(Toggle.Side),Vaxxo.ScreenAsset,Window,Toggle)
 			return Toggle
 		end
 		function Tab:Slider(Slider)
@@ -1181,7 +1181,7 @@ function Bracket:Window(Window)
 			Window.Elements[#Window.Elements + 1] = Slider
 			Window.Flags[Slider.Flag] = Slider.Value
 
-			InitSlider(ChooseTab(Slider.Side),Bracket.ScreenAsset,Window,Slider)
+			InitSlider(ChooseTab(Slider.Side),Vaxxo.ScreenAsset,Window,Slider)
 			return Slider
 		end
 		function Tab:Textbox(Textbox)
@@ -1195,7 +1195,7 @@ function Bracket:Window(Window)
 			Window.Elements[#Window.Elements + 1] = Textbox
 			Window.Flags[Textbox.Flag] = Textbox.Value
 
-			InitTextbox(ChooseTab(Textbox.Side),Bracket.ScreenAsset,Window,Textbox)
+			InitTextbox(ChooseTab(Textbox.Side),Vaxxo.ScreenAsset,Window,Textbox)
 			return Textbox
 		end
 		function Tab:Keybind(Keybind)
@@ -1209,7 +1209,7 @@ function Bracket:Window(Window)
 			Window.Elements[#Window.Elements + 1] = Keybind
 			Window.Flags[Keybind.Flag] = Keybind.Value
 
-			InitKeybind(ChooseTab(Keybind.Side),Bracket.ScreenAsset,Window,Keybind)
+			InitKeybind(ChooseTab(Keybind.Side),Vaxxo.ScreenAsset,Window,Keybind)
 			return Keybind
 		end
 		function Tab:Dropdown(Dropdown)
@@ -1219,7 +1219,7 @@ function Bracket:Window(Window)
 			Dropdown.List = GetType(Dropdown.List,{},"table")
 			Window.Elements[#Window.Elements + 1] = Dropdown
 
-			InitDropdown(ChooseTab(Dropdown.Side),Bracket.ScreenAsset,Window,Dropdown)
+			InitDropdown(ChooseTab(Dropdown.Side),Vaxxo.ScreenAsset,Window,Dropdown)
 			return Dropdown
 		end
 		function Tab:Colorpicker(Colorpicker)
@@ -1232,7 +1232,7 @@ function Bracket:Window(Window)
 			Window.Elements[#Window.Elements + 1] = Colorpicker
 			Window.Flags[Colorpicker.Flag] = Colorpicker.Value
 
-			InitColorpicker(ChooseTab(Colorpicker.Side),Bracket.ScreenAsset,Window,Colorpicker)
+			InitColorpicker(ChooseTab(Colorpicker.Side),Vaxxo.ScreenAsset,Window,Colorpicker)
 			return Colorpicker
 		end
 		function Tab:Section(Section)
@@ -1256,7 +1256,7 @@ function Bracket:Window(Window)
 				Button = GetType(Button,{},"table")
 				Button.Name = GetType(Button.Name,"Button","string")
 				Button.Callback = GetType(Button.Callback,function() end,"function")
-				InitButton(SectionContainer,Bracket.ScreenAsset,Window,Button)
+				InitButton(SectionContainer,Vaxxo.ScreenAsset,Window,Button)
 				return Button
 			end
 			function Section:Toggle(Toggle)
@@ -1269,7 +1269,7 @@ function Bracket:Window(Window)
 				Window.Elements[#Window.Elements + 1] = Toggle
 				Window.Flags[Toggle.Flag] = Toggle.Value
 
-				InitToggle(SectionContainer,Bracket.ScreenAsset,Window,Toggle)
+				InitToggle(SectionContainer,Vaxxo.ScreenAsset,Window,Toggle)
 				return Toggle
 			end
 			function Section:Slider(Slider)
@@ -1286,7 +1286,7 @@ function Bracket:Window(Window)
 				Window.Elements[#Window.Elements + 1] = Slider
 				Window.Flags[Slider.Flag] = Slider.Value
 
-				InitSlider(SectionContainer,Bracket.ScreenAsset,Window,Slider)
+				InitSlider(SectionContainer,Vaxxo.ScreenAsset,Window,Slider)
 				return Slider
 			end
 			function Section:Textbox(Textbox)
@@ -1300,7 +1300,7 @@ function Bracket:Window(Window)
 				Window.Elements[#Window.Elements + 1] = Textbox
 				Window.Flags[Textbox.Flag] = Textbox.Value
 
-				InitTextbox(SectionContainer,Bracket.ScreenAsset,Window,Textbox)
+				InitTextbox(SectionContainer,Vaxxo.ScreenAsset,Window,Textbox)
 				return Textbox
 			end
 			function Section:Keybind(Keybind)
@@ -1314,7 +1314,7 @@ function Bracket:Window(Window)
 				Window.Elements[#Window.Elements + 1] = Keybind
 				Window.Flags[Keybind.Flag] = Keybind.Value
 
-				InitKeybind(SectionContainer,Bracket.ScreenAsset,Window,Keybind)
+				InitKeybind(SectionContainer,Vaxxo.ScreenAsset,Window,Keybind)
 				return Keybind
 			end
 			function Section:Dropdown(Dropdown)
@@ -1324,7 +1324,7 @@ function Bracket:Window(Window)
 				Dropdown.List = GetType(Dropdown.List,{},"table")
 				Window.Elements[#Window.Elements + 1] = Dropdown
 
-				InitDropdown(SectionContainer,Bracket.ScreenAsset,Window,Dropdown)
+				InitDropdown(SectionContainer,Vaxxo.ScreenAsset,Window,Dropdown)
 				return Dropdown
 			end
 			function Section:Colorpicker(Colorpicker)
@@ -1337,7 +1337,7 @@ function Bracket:Window(Window)
 				Window.Elements[#Window.Elements + 1] = Colorpicker
 				Window.Flags[Colorpicker.Flag] = Colorpicker.Value
 
-				InitColorpicker(SectionContainer,Bracket.ScreenAsset,Window,Colorpicker)
+				InitColorpicker(SectionContainer,Vaxxo.ScreenAsset,Window,Colorpicker)
 				return Colorpicker
 			end
 			return Section
@@ -1347,18 +1347,18 @@ function Bracket:Window(Window)
 	return Window
 end
 
-function Bracket:TableToColor(Table)
+function Vaxxo:TableToColor(Table)
 	if type(Table) ~= "table" then return Table end
 	return Color3.fromHSV(Table[1],Table[2],Table[3])
 end
 
-function Bracket:Notification(Notification)
+function Vaxxo:Notification(Notification)
 	Notification = GetType(Notification,{},"table")
 	Notification.Title = GetType(Notification.Title,"Title","string")
 	Notification.Description = GetType(Notification.Description,"Description","string")
 
 	local NotificationAsset = GetAsset("Notification/ND")
-	NotificationAsset.Parent = Bracket.ScreenAsset.NDHandle
+	NotificationAsset.Parent = Vaxxo.ScreenAsset.NDHandle
 	NotificationAsset.Title.Text = Notification.Title
 	NotificationAsset.Description.Text = Notification.Description
 	NotificationAsset.Title.Size = UDim2.new(1,0,0,NotificationAsset.Title.TextBounds.Y)
@@ -1391,14 +1391,14 @@ function Bracket:Notification(Notification)
 	end
 end
 
-function Bracket:Notification2(Notification)
+function Vaxxo:Notification2(Notification)
 	Notification = GetType(Notification,{},"table")
 	Notification.Title = GetType(Notification.Title,"Title","string")
 	Notification.Duration = GetType(Notification.Duration,5,"number")
 	Notification.Color = GetType(Notification.Color,Color3.new(1,0.5,0.25),"Color3")
 
 	local NotificationAsset = GetAsset("Notification/NL")
-	NotificationAsset.Parent = Bracket.ScreenAsset.NLHandle
+	NotificationAsset.Parent = Vaxxo.ScreenAsset.NLHandle
 	NotificationAsset.Main.Title.Text = Notification.Title
 	NotificationAsset.Main.GLine.BackgroundColor3 = Notification.Color
 	NotificationAsset.Main.Size = UDim2.new(
@@ -1429,4 +1429,4 @@ function Bracket:Notification2(Notification)
 	end)
 end
 
-return Bracket
+return Vaxxo
